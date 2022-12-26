@@ -57,8 +57,8 @@
         </div>
         <div class="p-3">
             <div class="mb-3">
-                <a class="bg-teal-300 hover:bg-teal-400 right-0 py-2 px-3 text-white rounded-lg float-right mb-3" href="{{ url('/m_user/create') }}">
-                    <i class="fas fa-plus"></i></a>
+                {{-- <a class="bg-teal-300 hover:bg-teal-400 right-0 py-2 px-3 text-white rounded-lg float-right mb-3" href="{{ url('/m_user/create') }}">
+                    <i class="fas fa-plus"></i></a> --}}
             </div>
             <table class="table-responsive w-full rounded">
                 <thead>
@@ -82,8 +82,8 @@
                         <td class="border px-4 py-2">
                             <a class="bg-teal-300 hover:bg-teal-400 cursor-pointer rounded p-2 mx-1 text-white" href="{{ url('/m_user/'.$u->id.'/show') }}">
                                     <i class="fas fa-eye"></i></a>
-                            <a class="bg-teal-300 hover:bg-teal-400 cursor-pointer rounded p-2 mx-1 text-white" href="{{ url('/m_user/'.$u->id.'/edit') }}">
-                                    <i class="fas fa-edit"></i></a>
+                            {{-- <a class="bg-teal-300 hover:bg-teal-400 cursor-pointer rounded p-2 mx-1 text-white" href="{{ url('/m_user/'.$u->id.'/edit') }}">
+                                    <i class="fas fa-edit"></i></a> --}}
                             <button class="bg-teal-300 hover:bg-teal-400 cursor-pointer rounded p-2 mx-1 text-red-500 show-modal modal-trigger" 
                             data-modal='modalHapus'
                             onclick="return openModal({{$u->id}})"

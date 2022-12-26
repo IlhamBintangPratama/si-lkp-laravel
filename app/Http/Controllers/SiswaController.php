@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Gender;
 use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
@@ -44,6 +46,7 @@ class SiswaController extends Controller
             'jk' => 'required',
             'email' => 'required',
             'no_telp' => 'required|string|max:13',
+            'password' => 'required',
         ]);
 
         $siswa = Siswa::create([
@@ -52,6 +55,12 @@ class SiswaController extends Controller
             'jenis_kelamin' => $request->jk,
             'email' => $request->email,
             'no_hp' => $request->no_telp,
+        ]);
+        $u_siswa = User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request->get('password')),
+            'role' => 3,
         ]);
         $siswa->save();
 

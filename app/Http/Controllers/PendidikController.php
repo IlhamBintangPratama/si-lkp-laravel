@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Gender;
 use App\Models\Pendidik;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PendidikController extends Controller
 {
@@ -52,6 +54,12 @@ class PendidikController extends Controller
             'jenis_kelamin' => $request->jk,
             'email' => $request->email,
             'no_hp' => $request->no_hp,
+        ]);
+        $u_pendidik = User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request->get('password')),
+            'role' => 2,
         ]);
         $pendidik->save();
 

@@ -44,6 +44,11 @@
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required />
             </div><br>
             <div>
+                <label for="password" class="text-sm text-gray-700 block mb-1 font-medium">Password</label>
+                <input type="password" name="password" id="password" autocomplete="off" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
+                focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required />
+            </div><br>
+            <div>
                 <label for="no_hp" class="text-sm text-gray-700 block mb-1 font-medium">No. Telp</label>
                 <input type="number" name="no_hp" id="no_hp" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required />

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -119,6 +120,11 @@ class UserController extends Controller
         $user->name = $request->nama;
         $user->email = $request->email;
         $user->save();
+
+        $u_siswa = Siswa::where('email', '=', $user->email);
+        $u_siswa->nama = $request->nama;
+        $u_siswa->email = $request->email;
+        // $u_siswa->update();
 
         return redirect('/m_user')->with('updated', 'Data berhasil diubah!');
     }
