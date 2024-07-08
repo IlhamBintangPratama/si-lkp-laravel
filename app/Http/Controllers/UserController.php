@@ -16,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::select('id','name','email','role')->where('role', '!=', '1')->paginate(12);
+        $user = User::select('id','name','email','role')
+        ->where('role', '!=', '1')
+        ->paginate(12);
         // dd($user);
         return view('m_user.index', compact('user'));
     }

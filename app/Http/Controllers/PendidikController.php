@@ -106,7 +106,7 @@ class PendidikController extends Controller
             'nama' => 'required|string',
             'jk' => 'required',
             'email' => 'required|email',
-            'no_hp' => 'required',
+            // 'no_hp' => 'required',
         ]);
 
         $pendidik = Pendidik::find($id);
@@ -114,7 +114,7 @@ class PendidikController extends Controller
         $pendidik->nama = $request->get('nama');
         $pendidik->jenis_kelamin = $request->get('jk');
         $pendidik->email = $request->get('email');
-        $pendidik->no_hp = $request->get('no_hp');
+        // $pendidik->no_hp = $request->get('no_hp');
         $pendidik->update();
 
         return redirect('m_pendidik')->with('updated', "Data berhasil diubah");
@@ -129,8 +129,10 @@ class PendidikController extends Controller
     public function destroy($id)
     {
         $pendidik = Pendidik::findorfail($id);
+        // $user = User::findorfail($id);
+    
         $pendidik->delete();
-
+        // $user->delete();
         return redirect('m_pendidik')->with('deleted', 'Data berhasil dihapus');
     }
 }

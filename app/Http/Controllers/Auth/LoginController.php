@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -50,5 +53,26 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function registrasi()
+    {
+        return view('registrasi');
+    }
+
+    public function actionregister(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->get('password')),
+            'role' => 3,
+        ]);
+        
+        event(new Registered($user));
+
+        Auth::login($user);
+            return redirect('/dashboard_siswa');
+            
     }
 }

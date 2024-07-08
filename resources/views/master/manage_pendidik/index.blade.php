@@ -60,7 +60,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($kls as $no => $s)
+                    @forelse ($kls as $no => $s)
                     <tr>
                         <td class="border px-4 py-2">{{ $kls->firstItem()+$no }}</td>
                         <td class="border px-4 py-2">{{ $s->nama_kelas }}</td>
@@ -71,7 +71,13 @@
                                     <i class="fas fa-eye"></i></a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="4" class="border px-4 py-2 text-center">
+                                Data masih kosong
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

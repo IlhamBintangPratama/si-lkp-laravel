@@ -15,7 +15,7 @@
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required />
             </div><br>
             <div>
-                <label for="modul" class="text-sm text-gray-700 block mb-1 font-medium">Upload Modul</label>
+                <label for="modul" class="text-sm text-gray-700 block mb-1 font-medium">Upload Modul (Format: PDF, DOCX)</label>
                 <input type="file" name="modul" id="modul" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required />
             </div><br>

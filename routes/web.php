@@ -19,6 +19,7 @@ use App\Models\Penilaian;
 use App\Models\Siswa;
 use App\Models\SwKelas;
 use App\Models\User;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LoginController::class, 'login']);
 Route::post('/', [LoginController::class, 'logUser'])->name('logUser');
 // Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('registrasi', [LoginController::class, 'registrasi']);
+Route::post('registrasi', [LoginController::class, 'actionregister']);
+Route::get('/email/verify', function (){
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request){
+    $request->fulfill();
+
+    return redirect('dashboard_siswa');
+})->middleware(['auth', 'cekrole:3', 'signed'])->name('verification.verify');
+
+Route::get('/dashboard_siswa', function(){
+    return view('u_siswa.dashboard');
+})->middleware(['auth', 'cekrole:3', 'verified']);
 
 // Route::get('/', function () {
 
