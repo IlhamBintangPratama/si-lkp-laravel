@@ -48,7 +48,10 @@ class MHarianController extends Controller
         $request->validate([
             'judul' => 'string|required',
             'modul' => 'required|mimes:csv,docx,xls,pdf|max:2048',
-            'deskripsi' => 'string|required'
+            'deskripsi' => 'string|required',
+            'tanggal' => 'string|required',
+            'mapel' => 'string|required',
+
         ]);
 
         $namaModul = $request->file('modul')->getClientOriginalName();
@@ -59,6 +62,10 @@ class MHarianController extends Controller
             'modul' => $namaModul,
             // 'path' => $path,
             'deskripsi' => $request->get('deskripsi'),
+            'tanggal' => $request->get('tanggal'),
+            'mapel' => $request->get('mapel'),
+
+
         ]);
         $m_harian->save();
 

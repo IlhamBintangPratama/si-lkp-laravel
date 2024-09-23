@@ -304,4 +304,15 @@ class KelasController extends Controller
 
         return redirect('m_kelas')->with('deleted', 'Data berhasil dihapus');
     }
+
+
+
+
+
+
+    public function index_coba()
+    {
+
+        return view('m_coba.index');
+    }
 }

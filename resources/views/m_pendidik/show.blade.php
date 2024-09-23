@@ -22,11 +22,15 @@
                         <td class="w-1/2 px-4 py-2">: {{ $pendidik->nama }}</td>
                     </tr>
                     <tr>
+                        <td class="w-1/6 px-4 py-2">Keahlian Pendidik</td>
+                        <td class="w-1/2 px-4 py-2">: {{ $pendidik->nama }}</td>
+                    </tr>
+                    <tr>
                         <td class="w-1/6 px-4 py-2">JK</td>
                         <td class="w-1/2 px-4 py-2">: {{ $pendidik->jenis_kelamin }}</td>
                     </tr>
                     <tr>
-                        <td class="w-1/6 px-4 py-2">Email</td>
+                        <td class="w-1/6 px-4 py-2">Keahlian</td>
                         <td class="w-1/2 px-4 py-2">: {{ $pendidik->email }}</td>
                     </tr>
                     <tr>

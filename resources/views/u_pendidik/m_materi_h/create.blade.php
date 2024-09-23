@@ -26,6 +26,34 @@
                 {{-- <input type="" name="modul" id="modul" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required /> --}}
             </div><br>
+
+            <div>
+                <label for="tanggal" class="text-sm text-gray-700 block mb-1 font-medium">Tanggal</label>
+                <select class="form-control" name="tanggal" id="tanggal">
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Juli">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember"selected>Desember</option>
+                </select>
+
+                <div>
+                    <label for="mapel" class="text-sm text-gray-700 block mb-1 font-medium">Mapel</label>
+                    <select class="form-control" name="mapel" id="mapel">
+                        <option value="Agama">Agama</option>
+                        <option value="Fisika">Fisika</option>
+                        <option value="Kima">Kimia</option>
+                        <option value="Algoritma"selected>Algoritma</option>
+                    </select>
+
+            </div><br>
             
             
         </div>

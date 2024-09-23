@@ -66,7 +66,7 @@
                     @foreach ($m_nilai as $no => $s)
                     <tr>
                         <td class="border px-4 py-2">{{ $m_nilai->firstItem()+$no }}</td>
-                        <td class="border px-4 py-2">{{ $s->sisnilai->nama }}</td>
+                        <td class="border px-4 py-2">{{ $s->nama }}</td>
                         <td class="border px-4 py-2">{{ $s->tema_praktek }}</td>
                         <td class="border px-4 py-2">{{ $s->nilai_kreatif }}</td>
                         <td class="border px-4 py-2">{{ $s->nilai_ketrampilan }}</td>

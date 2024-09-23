@@ -16,6 +16,10 @@ class MateriHarian extends Model
         'modul',
         'path',
         'deskripsi',
-        'created_at'
+        'created_at',
+        'tanggal',
+        'mapel'
+
+
     ];
 }

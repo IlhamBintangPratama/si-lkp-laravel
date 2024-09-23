@@ -37,6 +37,12 @@
                         <td class="w-1/6 px-4 py-2">Tanggal</td>
                         <td class="w-1/2 px-4 py-2">: {{ $m_harian->created_at->format('D, Y-m-d') }}</td>
                     </tr>
+                    tr>
+                        <td class="w-1/6 px-4 py-2">Mapel</td>
+                        <td class="w-1/2 px-4 py-2">:
+                            {{ $m_harian->mapel }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

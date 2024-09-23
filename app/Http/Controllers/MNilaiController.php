@@ -18,8 +18,9 @@ class MNilaiController extends Controller
      */
     public function index()
     {
-        $m_nilai = Penilaian::paginate(12);
-
+        $m_nilai = Penilaian::select('penilaians.id','siswas.nama','tema_praktek','nilai_kreatif','nilai_ketrampilan','nilai_sikap')
+            ->join('siswas', 'id_siswa', '=', 'siswas.id')->paginate(12);
+        
         return view('u_pendidik.m_nilai.index', compact('m_nilai'));
     }
 
@@ -58,6 +59,7 @@ class MNilaiController extends Controller
         $nilai = Penilaian::create([
             'id_siswa' => $request->siswa,
             'tema_praktek' => $request->tema,
+            'tanggal' => date('Y-m-d'),
             'nilai_kreatif' => $request->n_kreatif,
             'nilai_ketrampilan' => $request->n_ketrampilan,
             'nilai_sikap' => $request->n_sikap

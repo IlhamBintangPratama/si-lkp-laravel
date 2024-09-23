@@ -19,6 +19,19 @@
                 <input type="text" name="nama" id="nama" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" required />
             </div><br>
+            <div>
+                <label for="nama" class="text-sm text-gray-700 block mb-1 font-medium">Keahlian</label>
+                <select id="keahlian" name="keahlian" class="orm-control block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" required>
+                    <option value="">- pilih -</option>
+                            @foreach(App\Models\Kelas::all() as $jk) 
+                            <option value="{{$jk->id}}">
+        
+                            {{$jk->nama_kelas}}
+        
+                            </option>
+                            @endforeach
+                </select>
+            </div><br>
             <div class="relative">
                 <label for="jk" class="text-sm text-gray-700 block mb-1 font-medium">Jenis Kelamin</label>
                 <select class="form-control block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"

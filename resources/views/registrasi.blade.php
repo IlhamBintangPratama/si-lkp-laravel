@@ -25,12 +25,46 @@
                     <input type="email" name="email" class="form-control" placeholder="Email" required="">
                 </div>
                 <div class="form-group">
-                    <label><i class="fa fa-user"></i> Username</label>
-                    <input type="text" name="name" class="form-control" placeholder="Username" required="">
-                </div>
-                <div class="form-group">
                     <label><i class="fa fa-key"></i> Password</label>
                     <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> Nama Lengkap</label>
+                    <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> NIK</label>
+                    <input type="text" name="nik" class="form-control" placeholder="NIK" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> Jenis Kelamin</label>
+                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                            <option value="">- pilih -</option>
+                            @foreach(App\Models\Gender::all() as $jk) 
+                            <option value="{{$jk->id}}">
+        
+                            {{$jk->gender}}
+        
+                            </option>
+                            @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> Nomor Telepon</label>
+                    <input type="text" name="no_hp" class="form-control" placeholder="Nomor Telepon" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> Kelas</label>
+                    <select class="form-control" id="kelas" name="kelas" required>
+                            <option value="">- pilih -</option>
+                            @foreach(App\Models\Kelas::all() as $jk) 
+                            <option value="{{$jk->id}}">
+        
+                            {{$jk->nama_kelas}}
+        
+                            </option>
+                            @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
                 <hr>

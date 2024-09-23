@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gender;
+use App\Models\Penilaian;
 use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
@@ -130,8 +132,46 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         $siswa = Siswa::findorfail($id);
+        $email = $siswa->email;
+        $user = User::where('email' , $email)->delete();
+        
         $siswa->delete();
+        // $user->delete();
+        
 
         return redirect('m_siswa')->with('deleted', 'Data berhasil dihapus!');
+    }
+    public function index_laporan()
+    {
+        $idsiswa = Siswa::select('id','email')->where('email','=',Auth::user()->email)->first();
+        $laporan = Penilaian::select('penilaians.id','id_siswa','siswas.nama','tema_praktek','nilai_kreatif','nilai_ketrampilan','nilai_sikap')
+            ->where('id_siswa','=',$idsiswa->id)
+            ->join('siswas', 'id_siswa', '=', 'siswas.id')->paginate(12);
+            // dd($laporan);
+        return view('u_siswa.s_laporan.index', compact('laporan'));
+    }
+
+    public function tanggal(Request $request)
+    {
+        try{
+            $awal = $request->dari;
+            $akhir = $request->sampai;
+            $tanggal = Penilaian::groupBy('created_at')->get('created_at');
+            $lapstok = Penilaian::select('penilaians.id','created_at','siswas.nama','tema_praktek','nilai_kreatif','nilai_ketrampilan','nilai_sikap')
+            ->whereDate('created_at', '>=', $awal)->whereDate('created_at', '<=', $akhir)->orderBy('created_at', 'desc')
+            ->join('siswas', 'id_siswa', '=', 'siswas.id')->paginate(8);
+
+            // $profil = User::select('name','level')->where('level', '=', 1)->first();
+            return view('u_siswa.s_laporan.index', compact('lapstok', 'profil','tanggal'));
+        }catch(\Exception $e){
+            return redirect()->back();
+        }
+    }
+    public function cetakLaporanNilai($dari, $sampai)
+    {
+        // dd(["Tanggal Awal: ".$dari, "Tanggal Akhir" .$sampai]);
+        $resultPerTanggal = Penilaian::with('sisnilai')->whereBetween('tanggal',[$dari, $sampai])->get();
+        // dd($resultPerTanggal);
+        return view('u_siswa.s_laporan.cetak', compact('resultPerTanggal'));
     }
 }

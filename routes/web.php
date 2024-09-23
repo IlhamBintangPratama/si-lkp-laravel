@@ -34,9 +34,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', [LoginController::class, 'login']);
-Route::post('/', [LoginController::class, 'logUser'])->name('logUser');
+Route::get('/', function () {
+        return view('welcome');
+    });
+Route::get('login', [LoginController::class, 'login']);
+Route::post('login', [LoginController::class, 'logUser'])->name('logUser');
 // Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('registrasi', [LoginController::class, 'registrasi']);
 Route::post('registrasi', [LoginController::class, 'actionregister']);
@@ -100,6 +102,12 @@ Route::get('/m_pendidik/{id}/edit', [PendidikController::class, 'edit']);
 Route::post('/m_pendidik/{id}/update', [PendidikController::class, 'update']);
 Route::post('/m_pendidik/{id}/destroy', [PendidikController::class, 'destroy']);
 
+Route::get('a_laporan', [PendidikController::class, 'index_laporan']);
+Route::get('a_laporan/tanggal', [PendidikController::class, 'laporan-tanggal']);
+Route::get('cetak-laporan-nilai/{dari}/{sampai}', [PendidikController::class, 'cetakLaporanNilai'])->name('cetak-laporan-nilai');
+
+Route::get('cetak-laporan/{id}/print', [PendidikController::class, 'cetakLaporan']);
+
 Route::get('m_kelas/create', [KelasController::class, 'create']);
 Route::post('m_kelas', [KelasController::class, 'store']);
 Route::get('m_kelas', [KelasController::class, 'index']);
@@ -123,6 +131,13 @@ Route::post('/k_siswa/{id}/destroy', [KelasController::class, 'destroy_siswa']);
 Route::get('account', [ProfileController::class, 'showAdmin']);
 Route::post('account', [ProfileController::class, 'changeProfile'])->name('changeProfile');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('k_coba', [KelasController::class, 'index_coba']);
+Route::get('k_coba/{id}/show', [KelasController::class, 'show_coba']);
+Route::get('k_coba/{id}/create', [KelasController::class, 'create_coba']);
+Route::post('k_coba', [KelasController::class, 'store_pendidik']);
+Route::post('/k_coba/{id}/destroy', [KelasController::class, 'destroy_coba']);
+
 });
 //Route Pendidik
 Route::group(['middleware'=>'auth','cekrole:2'], function () {
@@ -193,6 +208,11 @@ Route::get('/mat_harian/{id}/show', [MHarianController::class, 'show_siswa']);
 
 Route::get('mat_video', [MVideoController::class, 'index_siswa']);
 Route::get('/mat_video/{id}/show', [MVideoController::class, 'show_siswa']);
+
+Route::get('laporan_nilai', [SiswaController::class, 'index_laporan']);
+Route::get('laporan_nilai/tanggal', [SiswaController::class, 'laporan-tanggal']);
+Route::get('cetak-laporan-nilai/{dari}/{sampai}', [SiswaController::class, 'cetakLaporanNilai'])->name('cetak-laporan-nilai');
+
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 });

@@ -58,7 +58,9 @@
                         <th class="border px-4 py-2" style="width: 22%">Modul</th>
                         <th class="border px-4 py-2" style="width: 30%">Deskripsi</th>
                         <th class="border px-4 py-2" style="width: 14%">Tanggal</th>
+                        <th class="border px-4 py-2" style="width: 14%">Mapel</th>
                         <th class="border px-4 py-2" style="width: 17%">Aksi</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -69,6 +71,8 @@
                         <td class="border px-4 py-2">{{ $s->modul }}</td>
                         <td class="border px-4 py-2">{{ $s->deskripsi }}</td>
                         <td class="border px-4 py-2">{{ $s->created_at->format('D, Y-m-d') }}</td>
+                        <td class="border px-4 py-2">{{ $s->mapel }}</td>
+
                         
                         <td class="border px-4 py-2">
                             <a class="bg-teal-300 hover:bg-teal-400 cursor-pointer rounded p-2 mx-1 text-white" href="{{ url('/materi_harian/'.$s->id.'/show') }}">

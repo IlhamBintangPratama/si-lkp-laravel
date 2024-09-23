@@ -14,6 +14,7 @@ class Pendidik extends Model
         'nik',
         'nama',
         'jenis_kelamin',
+        'keahlian',
         'email',
         'no_hp',
     ];

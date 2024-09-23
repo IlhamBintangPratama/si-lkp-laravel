@@ -3,7 +3,7 @@
 @section ('content')
 
 <div class="p-8 rounded border border-gray-200">
-    <h1 class="font-medium text-3xl">Tambah Materi Video</h1>
+    <h1 class="font-medium text-3xl">Tambah Nilai Siswa</h1>
     {{-- <p class="text-gray-600 mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolorem vel cupiditate laudantium dicta.</p> --}}
 
     <form method="Post" action="{{ url('data_penilaian') }}" name="post" enctype="multipart/form-data">

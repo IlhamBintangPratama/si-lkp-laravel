@@ -20,6 +20,11 @@
                 <input type="text" name="nama" id="nama" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
                 focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" value="{{ old('name', $pendidik->nama) }}" required />
             </div><br>
+            <div>
+                <label for="nama" class="text-sm text-gray-700 block mb-1 font-medium">Keahlian</label>
+                <input type="text" name="nama" id="nama" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
+                focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" value="{{ old('name', $pendidik->nama) }}" required />
+            </div><br>
             <div class="relative">
                 <label for="jk" class="text-sm text-gray-700 block mb-1 font-medium">Jenis Kelamin</label>
                 <select class="form-control block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
@@ -38,7 +43,7 @@
             <div>
                 <label for="email" class="text-sm text-gray-700 block mb-1 font-medium">Email</label>
                 <input type="text" name="email" id="email" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block 
-                focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" value="{{ old('name', $pendidik->email) }}" required />
+                focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" value="{{ old('name', $pendidik->email) }}"  required />
             </div><br>
         
         </div>

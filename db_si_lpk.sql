@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2024 at 11:13 PM
+-- Generation Time: Jul 29, 2024 at 12:35 PM
 -- Server version: 8.0.36-0ubuntu0.20.04.1
 -- PHP Version: 8.1.7
 
@@ -110,7 +110,8 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id`, `nama_kelas`, `created_at`, `updated_at`) VALUES
-(2, 'Rias Pengantin', '2024-07-07 22:45:04', '2024-07-07 22:45:04');
+(2, 'Rias Pengantin', '2024-07-07 22:45:04', '2024-07-07 22:45:04'),
+(3, 'Hantaran', '2024-07-15 00:14:34', '2024-07-15 00:14:34');
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,7 @@ CREATE TABLE `ls_kelas` (
 
 INSERT INTO `ls_kelas` (`id`, `id_kelas`, `id_guru`, `created_at`, `updated_at`) VALUES
 (3, 2, NULL, '2024-07-07 22:45:04', '2024-07-07 22:45:04'),
-(5, 2, 7, NULL, NULL);
+(8, 3, NULL, '2024-07-15 00:14:34', '2024-07-15 00:14:34');
 
 -- --------------------------------------------------------
 
@@ -178,15 +179,23 @@ CREATE TABLE `materi_harians` (
   `modul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `deskripsi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `tanggal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `materi_harians`
 --
 
-INSERT INTO `materi_harians` (`id`, `judul`, `modul`, `deskripsi`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'BAB I-III.docx', 'test', '2024-07-07 23:20:01', '2024-07-07 23:20:01');
+INSERT INTO `materi_harians` (`id`, `judul`, `modul`, `deskripsi`, `created_at`, `updated_at`, `tanggal`, `mapel`) VALUES
+(4, 'tes 00', 'pengaduan.pdf', 'tes 0', '2024-07-15 01:42:50', '2024-07-15 01:42:50', '2024-07-15', ''),
+(5, 'tes5', 'KURIKULUM baru.pdf', 'tes 5', '2024-07-15 01:58:52', '2024-07-15 01:58:52', 'Juli', ''),
+(6, 'Agama', 'pengaduan.pdf', 'tes 2', '2024-07-15 02:01:41', '2024-07-15 02:01:41', 'Juli', ''),
+(7, 'tes', 'pengaduan.pdf', 'tes', '2024-07-15 02:21:51', '2024-07-15 02:21:51', 'Juli', 'Kima'),
+(8, 'tesss', 'pengaduan.pdf', 'tsss', '2024-07-15 02:30:47', '2024-07-15 02:30:47', 'Juli', 'Agama'),
+(9, 'dicoba', 'pengaduan.pdf', 'dicoba', '2024-07-15 02:43:00', '2024-07-15 02:43:00', 'Juli', 'Agama'),
+(10, 'tes9', 'pengaduan.pdf', 'tes', '2024-07-15 03:17:51', '2024-07-15 03:17:51', 'Juli', 'Kima');
 
 -- --------------------------------------------------------
 
@@ -276,13 +285,6 @@ CREATE TABLE `pendidiks` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `pendidiks`
---
-
-INSERT INTO `pendidiks` (`id`, `nik`, `nama`, `jenis_kelamin`, `email`, `no_hp`, `created_at`, `updated_at`) VALUES
-(7, 123123, 'Raya', '1', 'raya@gmail.com', '089122321249', '2024-07-07 23:16:35', '2024-07-07 23:16:35');
-
 -- --------------------------------------------------------
 
 --
@@ -352,13 +354,6 @@ CREATE TABLE `siswas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `siswas`
---
-
-INSERT INTO `siswas` (`id`, `nik`, `nama`, `jenis_kelamin`, `email`, `no_hp`, `created_at`, `updated_at`) VALUES
-(1, 2300877434423, 'Winarta', '2', 'wina@gmail.com', '08796887733', '2022-12-25 11:16:26', '2022-12-25 11:16:26');
-
 -- --------------------------------------------------------
 
 --
@@ -379,7 +374,8 @@ CREATE TABLE `sw_kelas` (
 --
 
 INSERT INTO `sw_kelas` (`id`, `id_kelas`, `id_guru`, `id_siswa`, `created_at`, `updated_at`) VALUES
-(3, 2, NULL, NULL, '2024-07-07 22:45:04', '2024-07-07 22:45:04');
+(3, 2, NULL, NULL, '2024-07-07 22:45:04', '2024-07-07 22:45:04'),
+(7, 3, NULL, NULL, '2024-07-15 00:14:34', '2024-07-15 00:14:34');
 
 -- --------------------------------------------------------
 
@@ -419,11 +415,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$YpMxy2hYIIK9Qinpmd/et.JnTukunMa2f1WbPjHZKgL4v87FrFv/m', 1, NULL, '2022-12-25 10:53:38', '2022-12-25 10:53:38'),
-(2, 'Winarta', 'wina@gmail.com', NULL, '045243954934348edc1e86a3c9c244e4', 3, NULL, '2022-12-25 11:16:26', '2023-03-11 02:09:15'),
-(8, 'Cipung', 'bbkgoreng72@gmail.com', NULL, '$2y$10$swYwqWkWAzblW3LEUQneXe5sERtqiTEr1cvBUFiVFi4nZT2LXKwcS', 3, NULL, '2024-06-27 07:01:44', '2024-06-27 07:01:44'),
-(14, 'raya', 'raya123@gmaill.com', NULL, '$2y$10$D6.JARTRE7i/.//sKK9IFOj0lzzJ2kLsIVkgKdDqs6tPqw/Mez73.', 2, NULL, '2024-07-07 23:09:49', '2024-07-07 23:09:49'),
-(15, 'Raya', 'raya@gmail.com', NULL, '$2y$10$XzwyA5IC9p7wWoCe6GJwLuLSr7IcfO8tSplZO4QGhpWYzeByf1qRO', 2, NULL, '2024-07-07 23:16:36', '2024-07-07 23:16:36');
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$1vYO2AwsZ7dMpaXvZcpZ/.DGdBq7VvZD4isI5nBG4VhXnKFrjbqWK', 1, NULL, '2024-07-28 21:39:57', '2024-07-28 21:39:57');
 
 --
 -- Indexes for dumped tables
@@ -603,7 +595,7 @@ ALTER TABLE `kehadiran`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `komen`
@@ -621,13 +613,13 @@ ALTER TABLE `ls_absen`
 -- AUTO_INCREMENT for table `ls_kelas`
 --
 ALTER TABLE `ls_kelas`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `materi_harians`
 --
 ALTER TABLE `materi_harians`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `materi_videos`
@@ -645,7 +637,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pendidiks`
 --
 ALTER TABLE `pendidiks`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `penilaians`
@@ -669,13 +661,13 @@ ALTER TABLE `presences`
 -- AUTO_INCREMENT for table `siswas`
 --
 ALTER TABLE `siswas`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sw_kelas`
 --
 ALTER TABLE `sw_kelas`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_libur`
@@ -687,7 +679,7 @@ ALTER TABLE `tb_libur`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
